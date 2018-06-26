@@ -8,3 +8,4 @@ def foo(request):
 
 def woo(request):
     return HttpResponse("Woo")
+

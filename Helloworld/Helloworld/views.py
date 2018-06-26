@@ -1,32 +1,34 @@
-from django. http import HttpResponse
+from django.http import HttpResponse
+
+from django.shortcuts import render
+
+from hashlib import md5
+
 
 def index(request):
-    return HttpResponse("""
-    <!DOCTYPE html>
-
-    <html>
-
-     <head>
-
-      <meta charset="utf-8"/>
-
-      <link rel="stylesheet"
-href="/static/style.css"/>
-    
-     </head>
-
-     <body>
-
-      <h1>Hello World</h1>
-
-     </body>
-
-    </html>
-    
-    """)
+    return render(request, 'index.html', {'title': 'Helo World'})
 
 def hoge(request):
-    return HttpResponse("Hoge") 
+    return HttpResponse("Hoge")
 
-def fuga(request):
-    return HttpResponse("Fuga")
+def search(request):
+    q = request.GET.get('q')
+    return HttpResponse(q)
+
+def fuga(request, foo):
+    return render(request, 'index.html', {'title': foo})
+
+def form(request):
+    return render(request, 'form.html')
+
+def upload(request):
+    if request.method == 'POST' and request.FILES['image'] and (request.FILES['image'].content_type == "image/png" or request.FILES['image'].content_type == "image/jpeg"):
+        extention = ".jpeg"
+        if request.FILES['image'].content_type == "image/png":
+            extention = ".png"
+        print(request.FILES['image'].name)
+        filepath = 'static/' + md5(request.FILES['image'].name.encode('utf-8')).hexdigest() + extention
+        image = open(filepath, 'wb')
+        for chunk in request.FILES['image'].chunks():
+                image.write(chunk)
+        return render(request, 'result.html', {'filepath': filepath, 'name': 'Hoge'})

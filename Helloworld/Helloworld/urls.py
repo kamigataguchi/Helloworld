@@ -19,11 +19,18 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views. index),
+
+    path('', views.index),
 
     path('hoge/', include('hoge.urls')),
+
+    path('fuga/<foo>', views.fuga),
+
+    path('upload', views.upload),
     
-    path('fuga', views. fuga),
-    
+    path('form', views.form),
+
+    path('search', views.search),
+ 
     path('admin/', admin.site.urls)
 ]

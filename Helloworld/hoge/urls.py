@@ -4,13 +4,13 @@ urlpatterns = [
     
     # /hoge に 対応
     
-    path('', views. index),
+    path('', views.index),
     
     # /hoge/ foo に 対応
     
-    path('foo', views. foo),
+    path('foo', views.foo),
     
     # /hoge/ woo に 対応
     
-    path('woo', views. woo), 
+    path('woo', views.woo), 
 ]
