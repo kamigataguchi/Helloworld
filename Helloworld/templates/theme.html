@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        {% block head %}
+
+        <link rel="stylesheet" href="/static/style.css"/>
+
+        <title>{% block title %}{% endblock %}</title>
+
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        <div id="content">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+
+        <div id="foooter">
+
+            {% block foooter %}
+
+              &copy; Copyright 2018 by <ahref="http://www.example.com/">Nakano Hitoshi</a>.
+
+              {% endblock %}
+
+        </div>
+
+    </body>
+    
+</html>

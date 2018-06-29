@@ -4,9 +4,10 @@ from django.shortcuts import render
 
 from hashlib import md5
 
+from random import random
 
 def index(request):
-    return render(request, 'index.html', {'title': 'Helo World'})
+    return render(request, 'index.html', {"title": "タイトル", "message": "メッセージ"})
 
 def hoge(request):
     return HttpResponse("Hoge")
